@@ -1,0 +1,1353 @@
+basePath: /
+definitions:
+  controllers.AddLanguageSkillRequest:
+    properties:
+      language:
+        type: string
+      level:
+        type: string
+      user_id:
+        type: integer
+    required:
+    - language
+    - level
+    - user_id
+    type: object
+  controllers.AddSupportRatingRequest:
+    properties:
+      chat_id:
+        type: integer
+      rating:
+        type: integer
+      user_id:
+        type: integer
+    required:
+    - chat_id
+    - rating
+    - user_id
+    type: object
+  controllers.AddUserToChatRequest:
+    properties:
+      user_id:
+        type: integer
+    required:
+    - user_id
+    type: object
+  controllers.AddUserToSupportRoomRequest:
+    properties:
+      user_id:
+        type: integer
+    required:
+    - user_id
+    type: object
+  controllers.AverageRatingResponse:
+    properties:
+      average_rating:
+        type: number
+    type: object
+  controllers.CheckContainerStatusResponse:
+    properties:
+      status:
+        type: string
+    type: object
+  controllers.CloseChatResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.CreateChatRequest:
+    properties:
+      assigned_to:
+        type: integer
+      name:
+        type: string
+      users:
+        description: Массив ID пользователей
+        items:
+          type: integer
+        type: array
+    required:
+    - name
+    - users
+    type: object
+  controllers.CreateChatResponse:
+    properties:
+      chat_id:
+        type: integer
+      created_at:
+        type: string
+      message:
+        type: string
+      name:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/models.User'
+        type: array
+    type: object
+  controllers.CreateSupportRoomRequest:
+    properties:
+      name:
+        type: string
+      users:
+        description: Массив ID пользователей
+        items:
+          type: integer
+        type: array
+    required:
+    - name
+    - users
+    type: object
+  controllers.CreateSupportRoomResponse:
+    properties:
+      created_at:
+        type: string
+      message:
+        type: string
+      name:
+        type: string
+      room_id:
+        type: integer
+      users:
+        items:
+          type: integer
+        type: array
+    type: object
+  controllers.EndShiftResponse:
+    properties:
+      duration:
+        description: Длительность смены в секундах
+        type: integer
+      end_time:
+        type: string
+      message:
+        type: string
+      shift_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  controllers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  controllers.GetChatHistoryResponse:
+    properties:
+      messages:
+        items:
+          $ref: '#/definitions/models.Message'
+        type: array
+    type: object
+  controllers.GetChatResponse:
+    properties:
+      chat:
+        $ref: '#/definitions/models.Chat'
+    type: object
+  controllers.GetContainerLogsResponse:
+    properties:
+      logs:
+        description: Изменено с []string на string
+        type: string
+    type: object
+  controllers.GetRolesResponse:
+    properties:
+      roles:
+        description: Изменено с []models.Role на []string
+        items:
+          type: string
+        type: array
+    type: object
+  controllers.GetSupportRoomStatusResponse:
+    properties:
+      message:
+        type: string
+      name:
+        type: string
+      room_id:
+        type: integer
+      status:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/controllers.UserDTO'
+        type: array
+    type: object
+  controllers.LoginResponse:
+    properties:
+      token:
+        type: string
+      user:
+        properties:
+          id:
+            type: integer
+          role:
+            type: integer
+        type: object
+    type: object
+  controllers.LogoutResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.ModerateMessagesResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.RegisterResponse:
+    properties:
+      message:
+        type: string
+      role:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  controllers.RemoveUserFromChatRequest:
+    properties:
+      user_id:
+        type: integer
+    required:
+    - user_id
+    type: object
+  controllers.SendMessageRequest:
+    properties:
+      attachment_id:
+        type: integer
+      chat_id:
+        type: integer
+      content:
+        type: string
+      user_id:
+        type: integer
+    required:
+    - chat_id
+    - content
+    - user_id
+    type: object
+  controllers.SendMessageResponse:
+    properties:
+      attachment_id:
+        type: integer
+      chat_id:
+        type: integer
+      content:
+        type: string
+      created_at:
+        type: string
+      message:
+        type: string
+      message_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  controllers.StartShiftRequest:
+    properties:
+      user_id:
+        type: integer
+    required:
+    - user_id
+    type: object
+  controllers.StartShiftResponse:
+    properties:
+      message:
+        type: string
+      shift_id:
+        type: integer
+      start_time:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  controllers.SuccessResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.TransferChatRequest:
+    properties:
+      new_user_id:
+        type: integer
+    required:
+    - new_user_id
+    type: object
+  controllers.UpdatePasswordRequest:
+    properties:
+      new_password:
+        type: string
+      username:
+        type: string
+    required:
+    - new_password
+    - username
+    type: object
+  controllers.UpdatePasswordResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.UpdateRolesRequest:
+    properties:
+      new_role:
+        type: string
+      user_id:
+        type: integer
+    required:
+    - new_role
+    - user_id
+    type: object
+  controllers.UpdateRolesResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.UpdateUserResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  controllers.UploadAttachmentResponse:
+    properties:
+      attachment_id:
+        type: integer
+      filename:
+        type: string
+      filesize:
+        type: integer
+      filetype:
+        type: string
+      message:
+        type: string
+      upload_time:
+        type: string
+    type: object
+  controllers.UserDTO:
+    properties:
+      id:
+        type: integer
+      role:
+        type: string
+    type: object
+  models.Chat:
+    properties:
+      assigned_to:
+        type: integer
+      created_at:
+        type: string
+      entry_point:
+        type: string
+      id:
+        type: integer
+      messages:
+        items:
+          $ref: '#/definitions/models.Message'
+        type: array
+      name:
+        type: string
+      status:
+        type: string
+      updated_at:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/models.User'
+        type: array
+    type: object
+  models.Message:
+    properties:
+      attached_id:
+        type: integer
+      chat_id:
+        type: integer
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      is_checked:
+        type: boolean
+      is_read:
+        type: boolean
+      user_id:
+        type: integer
+    type: object
+  models.Role:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      role:
+        allOf:
+        - $ref: '#/definitions/models.Role'
+        description: Связь с моделью Role
+      role_id:
+        type: integer
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /admin/logs:
+    get:
+      consumes:
+      - application/json
+      description: Этот эндпоинт возвращает логи контейнеров.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.GetContainerLogsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение логов контейнеров
+      tags:
+      - Контейнеры
+  /admin/moderate:
+    get:
+      consumes:
+      - application/json
+      description: Этот эндпоинт выполняет модерацию сообщений.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ModerateMessagesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Модерация сообщений
+      tags:
+      - Модерация
+  /admin/roles:
+    get:
+      consumes:
+      - application/json
+      description: Этот эндпоинт возвращает список всех ролей пользователей.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.GetRolesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение ролей пользователей
+      tags:
+      - Роли
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт обновляет роли пользователей.
+      parameters:
+      - description: Информация о ролях
+        in: body
+        name: roles
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UpdateRolesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.UpdateRolesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Обновление ролей пользователей
+      tags:
+      - Роли
+  /admin/status:
+    get:
+      consumes:
+      - application/json
+      description: Этот эндпоинт проверяет загруженность контейнеров.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.CheckContainerStatusResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Проверка статуса контейнеров
+      tags:
+      - Контейнеры
+  /attachment:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Этот эндпоинт загружает файл как вложение и сохраняет его в базе
+        данных.
+      parameters:
+      - description: Файл для загрузки
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.UploadAttachmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Загрузка вложения
+      tags:
+      - Вложения
+  /attachment/{id}:
+    get:
+      description: Этот эндпоинт скачивает вложение по его ID.
+      parameters:
+      - description: ID вложения
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: Вложение
+          schema:
+            type: file
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Скачивание вложения
+      tags:
+      - Вложения
+  /chat:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт создает новый чат и добавляет пользователей в него.
+      parameters:
+      - description: Данные для создания чата
+        in: body
+        name: chat
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.CreateChatRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.CreateChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Создание нового чата
+      tags:
+      - Чаты
+  /chat/{id}:
+    get:
+      description: Этот эндпоинт возвращает информацию о чате по его ID.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.GetChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение информации о чате
+      tags:
+      - Чаты
+  /chat/{id}/add_user:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт добавляет пользователя в чат.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Информация о пользователе
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AddUserToChatRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Добавление пользователя в чат
+      tags:
+      - Чаты
+  /chat/{id}/close:
+    post:
+      description: Этот эндпоинт закрывает чат.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.CloseChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Закрытие чата
+      tags:
+      - Чаты
+  /chat/{id}/history:
+    get:
+      description: Этот эндпоинт возвращает историю сообщений в чате по его ID.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.GetChatHistoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение истории сообщений в чате
+      tags:
+      - Чаты
+  /chat/{id}/remove_user:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт удаляет пользователя из чата.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Информация о пользователе
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.RemoveUserFromChatRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Удаление пользователя из чата
+      tags:
+      - Чаты
+  /chat/{id}/transfer:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт передает чат другому пользователю.
+      parameters:
+      - description: ID чата
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Данные для передачи чата
+        in: body
+        name: transfer
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.TransferChatRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Передача чата другому пользователю
+      tags:
+      - Чаты
+  /language_skill:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт добавляет новый языковой навык сотруднику.
+      parameters:
+      - description: Данные для добавления языкового навыка
+        in: body
+        name: skill
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AddLanguageSkillRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Добавление языкового навыка
+      tags:
+      - Языковые навыки
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт выполняет аутентификацию пользователя и возвращает
+        JWT токен.
+      parameters:
+      - description: Информация для аутентификации
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Аутентификация пользователя
+      tags:
+      - Пользователи
+  /logout:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт завершает текущую сессию пользователя.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.LogoutResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Выход пользователя
+      tags:
+      - Пользователи
+  /message:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт отправляет новое сообщение в указанный чат.
+      parameters:
+      - description: Данные сообщения
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.SendMessageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SendMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Отправка нового сообщения
+      tags:
+      - Сообщения
+  /message/{id}:
+    delete:
+      description: Этот эндпоинт удаляет сообщение по его ID.
+      parameters:
+      - description: ID сообщения
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Удаление сообщения
+      tags:
+      - Сообщения
+  /message/{id}/checked:
+    put:
+      description: Этот эндпоинт помечает сообщение как проверенное.
+      parameters:
+      - description: ID сообщения
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Пометка сообщения как проверенного
+      tags:
+      - Сообщения
+  /message/{id}/read:
+    put:
+      description: Этот эндпоинт помечает сообщение как прочитанное.
+      parameters:
+      - description: ID сообщения
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Пометка сообщения как прочитанного
+      tags:
+      - Сообщения
+  /messages:
+    get:
+      description: Этот эндпоинт возвращает список всех сообщений в указанном чате.
+      parameters:
+      - description: ID чата
+        in: query
+        name: chat_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Message'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение списка сообщений
+      tags:
+      - Сообщения
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт регистрирует нового пользователя с уникальными именем
+        пользователя и email.
+      parameters:
+      - description: Информация о пользователе
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.RegisterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Регистрация пользователя
+      tags:
+      - Пользователи
+  /shift/end/{id}:
+    post:
+      description: Этот эндпоинт завершает указанную смену.
+      parameters:
+      - description: ID смены
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.EndShiftResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Завершение смены
+      tags:
+      - Смены
+  /shift/start:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт начинает новую смену для указанного пользователя.
+      parameters:
+      - description: Данные для начала смены
+        in: body
+        name: shift
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.StartShiftRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.StartShiftResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Начало смены
+      tags:
+      - Смены
+  /support/rating:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт добавляет новую оценку техподдержке от пользователя.
+      parameters:
+      - description: Данные для добавления оценки
+        in: body
+        name: rating
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AddSupportRatingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Добавление оценки техподдержке
+      tags:
+      - Оценки
+  /support/rating/{chat_id}:
+    get:
+      description: Этот эндпоинт возвращает среднюю оценку техподдержки для указанного
+        чата.
+      parameters:
+      - description: ID чата
+        in: path
+        name: chat_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.AverageRatingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение средней оценки техподдержки
+      tags:
+      - Оценки
+  /support_room:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт создает новую комнату техподдержки и добавляет в
+        нее указанных пользователей.
+      parameters:
+      - description: Данные для создания комнаты техподдержки
+        in: body
+        name: room
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.CreateSupportRoomRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.CreateSupportRoomResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Создание комнаты техподдержки
+      tags:
+      - Комнаты техподдержки
+  /support_room/{id}/add_user:
+    post:
+      consumes:
+      - application/json
+      description: Этот эндпоинт добавляет пользователя в указанную комнату техподдержки.
+      parameters:
+      - description: ID комнаты техподдержки
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Данные для добавления пользователя
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AddUserToSupportRoomRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Добавление пользователя в комнату техподдержки
+      tags:
+      - Комнаты техподдержки
+  /support_room/{id}/status:
+    get:
+      description: Этот эндпоинт возвращает статус указанной комнаты техподдержки,
+        включая список пользователей.
+      parameters:
+      - description: ID комнаты техподдержки
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.GetSupportRoomStatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Получение статуса комнаты техподдержки
+      tags:
+      - Комнаты техподдержки
+  /user/update:
+    put:
+      consumes:
+      - application/json
+      description: Этот эндпоинт обновляет информацию о пользователе.
+      parameters:
+      - description: Информация о пользователе
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.UpdateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Обновление данных пользователя
+      tags:
+      - Пользователи
+  /user/update-password:
+    put:
+      consumes:
+      - application/json
+      description: Этот эндпоинт меняет пароль пользователя.
+      parameters:
+      - description: Запрос на смену пароля
+        in: body
+        name: password
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UpdatePasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.UpdatePasswordResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Смена пароля пользователя
+      tags:
+      - Пользователи
+swagger: "2.0"
